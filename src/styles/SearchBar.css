@@ -3,40 +3,48 @@
   width: 100%;
 }
 
-.search-input {
-  width: 100%;
-  padding: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.input-container {
+  display: flex;
+  align-items: center;
 }
 
-.loading, .error {
-  margin: 5px 0;
-  font-size: 0.875rem;
-  color: #666;
+.search-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.loading-icon {
+  margin-left: 10px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
 }
 
 .dropdown-container {
   position: absolute;
-  width: 100%;
   top: 100%;
   left: 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background: #fff;
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 10;
 }
 
 .suggestions-dropdown {
-  list-style: none;
-  padding: 0;
+  list-style-type: none;
   margin: 0;
+  padding: 0;
 }
 
 .no-suggestions {
-  padding: 10px;
-  text-align: center;
+  padding: 8px;
   color: #888;
 }

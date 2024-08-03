@@ -1,7 +1,9 @@
+// SearchBar.jsx
 import React, { useState, useEffect, ChangeEvent } from "react";
 import APIConsumer from "../api/APIConsumer";
 import { Usuario } from "../interfaces/types";
 import UserSuggestion from "./UserSuggestion";
+import LoadingIcon from "./LoadingIcon";
 import "../styles/SearchBar.css";
 
 interface SearchBarProps {
@@ -56,16 +58,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ usuarioId, onUserSelect }) => {
 
   return (
     <div className="search-bar" onBlur={handleBlur}>
-      <input
-        type="text"
-        value={search}
-        onChange={handleChange}
-        placeholder="Buscar usuarios..."
-        onFocus={() => setShowDropdown(true)}
-        className="search-input"
-      />
+      <div className="input-container">
+        <input
+          type="text"
+          value={search}
+          onChange={handleChange}
+          placeholder="Buscar usuarios..."
+          onFocus={() => setShowDropdown(true)}
+          className="search-input"
+        />
+        {loading && <LoadingIcon />}
+      </div>
 
-      {loading && <p className="loading">Cargando...</p>}
       {error && <p className="error">{error}</p>}
 
       {showDropdown && (

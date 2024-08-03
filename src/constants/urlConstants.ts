@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080";
+const API_URL = "https://gigachatbackend.onrender.com";
 
 const CHATS_ENDPOINT = `${API_URL}/api/chats`;
 const USUARIOS_ENDPOINT = `${API_URL}/api/usuarios`;

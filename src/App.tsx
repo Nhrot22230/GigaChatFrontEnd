@@ -15,7 +15,7 @@ const App: React.FC = () => {
         <Route path="/" element={<Navigate to="/giga-chat" />} />
         <Route path="/login" element={<Login />} />
         <Route path="/giga-chat" element={<GigaChat />} />
-        {/* Puedes agregar más rutas aquí */}
+        <Route path="*" element={<Navigate to="/giga-chat" />} />
       </Routes>
     </Router>
   );

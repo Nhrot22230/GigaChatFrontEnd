@@ -1,7 +1,9 @@
-import React from "react";
+// Aside.jsx
+import React, { useState, useEffect } from "react";
 import SearchBar from "./SearchBar";
 import { Chat, ChatType, Usuario } from "../interfaces/types";
 import ChatCard from "./ChatCard";
+import LoadingSpinner from "./LoadingSpinner"; // Importar el componente LoadingSpinner
 import "../styles/Aside.css";
 
 interface AsideProps {
@@ -11,10 +13,18 @@ interface AsideProps {
 }
 
 const Aside: React.FC<AsideProps> = ({ chats, setSelectChat, usuario }) => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000); 
+  }, []);
+
   const handleUserSelect = (user: Usuario) => {
     chats.forEach((chat) => {
       if (
-        chat.tipo === ChatType.INDIVIDUAL && 
+        chat.tipo === ChatType.INDIVIDUAL &&
         chat.usuarios &&
         chat.usuarios.length === 2 &&
         chat.usuarios.some((u) => u.id === user.id)
@@ -22,8 +32,8 @@ const Aside: React.FC<AsideProps> = ({ chats, setSelectChat, usuario }) => {
         setSelectChat(chat);
         return;
       }
-    })
-    
+    });
+
     const newChat: Chat = {
       id: 0,
       titulo: `${usuario.username} & ${user.username}`,
@@ -44,7 +54,9 @@ const Aside: React.FC<AsideProps> = ({ chats, setSelectChat, usuario }) => {
         <SearchBar usuarioId={usuario.id} onUserSelect={handleUserSelect} />
       </div>
       <div className="chat-list">
-        {chats.length > 0 ? (
+        {loading ? (
+          <LoadingSpinner />
+        ) : chats.length > 0 ? (
           chats.map((chat) => (
             <ChatCard
               key={chat.id}
