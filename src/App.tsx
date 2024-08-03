@@ -1,33 +1,23 @@
 import React from "react";
-import { User } from "./model/myProps";
-import "./App.css";
-import { Link, Route, Routes } from "react-router-dom";
-import Login from "./views/Login";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import Login from "./pages/Login";
+import GigaChat from "./pages/GigaChat";
 
 const App: React.FC = () => {
-
-  const user: User = JSON.parse(localStorage.getItem("user") || "null");
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Giga Chat</h1>
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        {user? 
-        <div>
-          <p>Welcome {user.nickname}</p>
-          <a href="#chat">Chat</a> 
-        </div>
-        : 
-        <Link to="/login">Login</Link>
-        }
-      </header>
+    <Router>
       <Routes>
+        <Route path="/" element={<Navigate to="/giga-chat" />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/giga-chat" element={<GigaChat />} />
+        {/* Puedes agregar más rutas aquí */}
       </Routes>
-    </div>
+    </Router>
   );
 };
 

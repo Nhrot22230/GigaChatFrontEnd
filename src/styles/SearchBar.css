@@ -1,0 +1,42 @@
+.search-bar {
+  position: relative;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.loading, .error {
+  margin: 5px 0;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.dropdown-container {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  z-index: 10;
+}
+
+.suggestions-dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.no-suggestions {
+  padding: 10px;
+  text-align: center;
+  color: #888;
+}

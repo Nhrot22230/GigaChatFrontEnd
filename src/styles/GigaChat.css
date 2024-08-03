@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.gigachat {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f4f4f9;
+}
+
+.gigachat-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.error-message {
+  color: #ff4d4d;
+  background-color: #fdd;
+  border: 1px solid #fbb;
+  border-radius: 4px;
+  padding: 15px;
+  margin: 20px;
+  text-align: center;
+}
+
+.no-chats-message {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+.no-chats-message h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}

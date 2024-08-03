@@ -1,0 +1,35 @@
+.chat-card {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.chat-card:hover {
+  background-color: #f0f0f0;
+}
+
+.chat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-card-title {
+  font-size: 1.1em;
+  margin: 0;
+}
+
+.chat-card-last-message-info {
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+.chat-card-last-message {
+  margin: 5px 0 0;
+  font-size: 0.9em;
+  color: #333;
+}

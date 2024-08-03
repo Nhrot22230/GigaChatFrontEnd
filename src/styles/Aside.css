@@ -1,0 +1,33 @@
+.aside-container {
+  flex-shrink: 0;
+  width: 300px;
+  background-color: #f9f9f9;
+  border-right: 1px solid #ddd;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.aside-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.chat-list {
+  flex: 1; /* Hace que el contenedor de chats ocupe el espacio restante */
+  overflow-y: auto; /* Añade scroll si hay muchos chats */
+}
+
+.no-chats-message {
+  text-align: center;
+  color: #888;
+  padding: 20px;
+  font-size: 1rem;
+}

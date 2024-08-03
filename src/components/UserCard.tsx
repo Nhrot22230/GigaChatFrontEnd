@@ -1,16 +1,24 @@
 import React from "react";
-import { User } from "../model/myProps";
+import { Usuario } from "../interfaces/types";
+import "../styles/UserCard.css";
 
-const UserCard: React.FC<User> = ({
-  userid,
-  nickname,
-  firstName,
-  lastName,
-}) => {
+interface UserCardProps {
+  usuario: Usuario;
+}
+
+const UserCard: React.FC<UserCardProps> = ({ usuario }) => {
   return (
-    <div>
-      <h1>{nickname} [{userid}]</h1>
-      <p>Full Name: {firstName} {lastName}</p>
+    <div className="user-card">
+      <div className="user-card-avatar">
+        <img
+          src={`https://ui-avatars.com/api/?name=${usuario.username}&background=random`}
+          alt={usuario.username}
+        />
+      </div>
+      <div className="user-card-info">
+        <h2 className="user-card-username">{usuario.username}</h2>
+        <p className="user-card-email">{usuario.email || "No proporcionado"}</p>
+      </div>
     </div>
   );
 };
