@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Chat,
   ClientMessage,
@@ -17,7 +17,7 @@ interface ChatBoxProps {
 }
 
 const ChatBox: React.FC<ChatBoxProps> = ({ chat, usuario, messages, setChat }) => {
-  const [message, setMessage] = React.useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -27,27 +27,31 @@ const ChatBox: React.FC<ChatBoxProps> = ({ chat, usuario, messages, setChat }) =
   const handleSend = async () => {
     if (message.trim() === "") return;
 
-    let newMessage: ClientMessage = {
+    const newMessage: ClientMessage = {
       chatId: chat.id,
       usuario: usuario,
       type: MessageType.TEXT,
       content: message,
       timestamp: new Date().toISOString(),
     };
-    
-    if (chat.id === 0) {
-      const data = await APIConsumer.createChat(chat);
-      if (!data) return;
-      newMessage.chatId = data.id;
-      APIConsumer.notifyNewChat({
-        chat: data,
-        messages: [newMessage],
-      });
-      data.messages = [newMessage];
-      setChat(data);
+
+    try {
+      if (chat.id === 0) {
+        const data = await APIConsumer.createChat(chat);
+        if (!data) return;
+        newMessage.chatId = data.id;
+        APIConsumer.notifyNewChat({
+          chat: data,
+          messages: [newMessage],
+        });
+        data.messages = [newMessage];
+        setChat(data);
+      }
+      await APIConsumer.sendMessage(newMessage);
+      setMessage("");
+    } catch (error) {
+      console.error("Error sending message:", error);
     }
-    APIConsumer.sendMessage(newMessage);
-    setMessage("");
   };
 
   return (
